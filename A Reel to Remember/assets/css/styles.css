@@ -1,0 +1,146 @@
+*{
+box-sizing: border-box;
+user-select: none;
+-webkit-user-select: none;
+-webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+font-family: 'Inter', sans-serif;
+background-color: #1e293b;
+}
+
+.font-display {
+font-family: 'Cinzel', serif;
+}
+
+.font-mono-code {
+font-family: 'JetBrains Mono', monospace;
+}
+
+/* Fullscreen Responsive Game Canvas */
+#gameCanvas {
+display: block;
+width: 100%;
+height: 100%;
+touch-action: none;
+}
+
+/* Atmospheric Glassmorphic HUD Panel */
+.fisch-panel {
+background: rgba(15, 23, 42, 0.84);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(148, 163, 184, 0.25);
+box-shadow: 0 12px 32px rgba(2, 6, 23, 0.55);
+}
+
+/* Aged Parchment Resume Fragment Styling */
+.parchment-card {
+background: linear-gradient(145deg, #fdf6e3 0%, #f5e6c4 55%, #ebd5a7 100%);
+color: #292018;
+border: 2px solid #b89762;
+box-shadow: inset 0 0 24px rgba(139, 98, 42, 0.22), 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.parchment-slot-empty {
+background: rgba(30, 41, 59, 0.65);
+border: 2px dashed rgba(251, 191, 36, 0.45);
+transition: all 0.2s ease;
+}
+
+.parchment-slot-empty:hover,
+.parchment-slot-empty.drag-over {
+background: rgba(251, 191, 36, 0.16);
+border-color: #fbbf24;
+transform: scale(1.01);
+}
+
+/* Custom Scrollbar inside Resume & Puzzle Modals */
+.custom-scroll::-webkit-scrollbar {
+width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+background: rgba(15, 23, 42, 0.3);
+border-radius: 999px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+background: rgba(180, 145, 90, 0.65);
+border-radius: 999px;
+}
+
+/* Floating & Pulse Animations */
+@keyframes floatBob {
+0%, 100% { transform: translateY(0px) rotate(-2deg); }
+50% { transform: translateY(-8px) rotate(2deg); }
+}
+.animate-float {
+animation: floatBob 3s ease-in-out infinite;
+}
+
+@keyframes pulseScale {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.06); }
+}
+.animate-pulse-fast {
+animation: pulseScale 0.65s ease-in-out infinite;
+}
+
+@keyframes chompShake {
+0%, 100% { transform: scale(1) rotate(0deg); }
+25% { transform: scale(1.04) rotate(-2deg); }
+75% { transform: scale(1.04) rotate(2deg); }
+}
+.animate-chomp {
+animation: chompShake 0.45s ease-in-out infinite;
+}
+
+/* Shining Rod Pop-Out Reveal & Sunburst Rays */
+@keyframes rodPopEntrance {
+0% { opacity: 0; transform: scale(0.3) rotate(-18deg) translateY(24px); }
+65% { opacity: 1; transform: scale(1.08) rotate(3deg) translateY(-4px); }
+100% { opacity: 1; transform: scale(1) rotate(0deg) translateY(0px); }
+}
+.animate-rod-pop {
+animation: rodPopEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes spinSunburst {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.animate-sunburst {
+animation: spinSunburst 14s linear infinite;
+}
+
+@keyframes twinkleStar {
+0%, 100% { opacity: 0.2; transform: scale(0.6) rotate(0deg); }
+50% { opacity: 1; transform: scale(1.25) rotate(25deg); }
+}
+.animate-twinkle {
+animation: twinkleStar 1.6s ease-in-out infinite;
+}
+
+/* Print styling for Interviewer Resume Dossier */
+@media print {
+body * {
+visibility: hidden;
+}
+#victoryDossierModal, #victoryDossierModal * {
+visibility: visible;
+}
+#victoryDossierModal {
+position: absolute;
+inset: 0;
+background: white !important;
+padding: 0 !important;
+}
+.no-print {
+display: none !important;
+}
+}
